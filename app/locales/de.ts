@@ -1,15 +1,21 @@
 import { SubmitKey } from "../store/config";
 import type { PartialLocaleType } from "./index";
 import { getClientConfig } from "../config/client";
-
+import { SAAS_CHAT_UTM_URL } from "@/app/constant";
 const isApp = !!getClientConfig()?.isApp;
 
 const de: PartialLocaleType = {
   WIP: "In Bearbeitung...",
   Error: {
     Unauthorized: isApp
-      ? "Ungültiger API-Schlüssel erkannt. Bitte gehen Sie zur [Einstellungen](/#/settings) Seite, um zu überprüfen, ob der API-Schlüssel korrekt konfiguriert ist."
-      : "Das Passwort ist falsch oder leer. Bitte gehen Sie zur [Login](/#/auth) Seite, um das richtige Passwort einzugeben, oder fügen Sie Ihren OpenAI API-Schlüssel auf der [Einstellungen](/#/settings) Seite hinzu.",
+      ? `😆 Das Gespräch hatte einige Probleme, keine Sorge:
+    \\ 1️⃣ Wenn du ohne Konfiguration sofort starten möchtest, [klicke hier, um sofort zu chatten 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 2️⃣ Wenn du deine eigenen OpenAI-Ressourcen verwenden möchtest, klicke [hier](/#/settings), um die Einstellungen zu ändern ⚙️`
+      : `😆 Das Gespräch hatte einige Probleme, keine Sorge:
+    \ 1️⃣ Wenn du ohne Konfiguration sofort starten möchtest, [klicke hier, um sofort zu chatten 🚀](${SAAS_CHAT_UTM_URL})
+    \ 2️⃣ Wenn du eine private Bereitstellung verwendest, klicke [hier](/#/auth), um den Zugriffsschlüssel einzugeben 🔑
+    \ 3️⃣ Wenn du deine eigenen OpenAI-Ressourcen verwenden möchtest, klicke [hier](/#/settings), um die Einstellungen zu ändern ⚙️
+ `,
   },
   Auth: {
     Title: "Passwort erforderlich",
@@ -18,6 +24,11 @@ const de: PartialLocaleType = {
     Input: "Geben Sie hier den Zugangscode ein",
     Confirm: "Bestätigen",
     Later: "Später",
+    Return: "Zurück",
+    SaasTips:
+      "Die Konfiguration ist zu kompliziert, ich möchte es sofort nutzen",
+    TopTips:
+      "🥳 NextChat AI Einführungsangebot, schalte jetzt OpenAI o1, GPT-4o, Claude-3.5 und die neuesten großen Modelle frei",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} Gespräche`,
@@ -43,6 +54,8 @@ const de: PartialLocaleType = {
       PinToastAction: "Ansehen",
       Delete: "Löschen",
       Edit: "Bearbeiten",
+      RefreshTitle: "Titel aktualisieren",
+      RefreshToast: "Anfrage zur Titelaktualisierung gesendet",
     },
     Commands: {
       new: "Neues Gespräch",
@@ -289,6 +302,14 @@ const de: PartialLocaleType = {
     },
 
     Access: {
+      SaasStart: {
+        Title: "NextChat AI verwenden",
+        Label: "(Die kosteneffektivste Lösung)",
+        SubTitle:
+          "Offiziell von NextChat verwaltet, sofort einsatzbereit ohne Konfiguration, unterstützt die neuesten großen Modelle wie OpenAI o1, GPT-4o und Claude-3.5",
+        ChatNow: "Jetzt chatten",
+      },
+
       AccessCode: {
         Title: "Zugangscode",
         SubTitle:
@@ -413,6 +434,17 @@ const de: PartialLocaleType = {
           SubTitle: "Beispiel:",
         },
       },
+      AI302: {
+        ApiKey: {
+          Title: "Schnittstellenschlüssel",
+          SubTitle: "Verwenden Sie einen benutzerdefinierten 302.AI API-Schlüssel",
+          Placeholder: "302.AI API-Schlüssel",
+        },
+        Endpoint: {
+          Title: "Endpunktadresse",
+          SubTitle: "Beispiel:",
+        },
+      },
       CustomModel: {
         Title: "Benutzerdefinierter Modellname",
         SubTitle:
@@ -421,6 +453,10 @@ const de: PartialLocaleType = {
     },
 
     Model: "Modell",
+    CompressModel: {
+      Title: "Kompressionsmodell",
+      SubTitle: "Modell zur Komprimierung des Verlaufs",
+    },
     Temperature: {
       Title: "Zufälligkeit (temperature)",
       SubTitle: "Je höher der Wert, desto zufälliger die Antwort",
@@ -481,6 +517,21 @@ const de: PartialLocaleType = {
   },
   FineTuned: {
     Sysmessage: "Du bist ein Assistent",
+  },
+  SearchChat: {
+    Name: "Suche",
+    Page: {
+      Title: "Chatverlauf durchsuchen",
+      Search: "Suchbegriff eingeben",
+      NoResult: "Keine Ergebnisse gefunden",
+      NoData: "Keine Daten",
+      Loading: "Laden",
+
+      SubTitle: (count: number) => `${count} Ergebnisse gefunden`,
+    },
+    Item: {
+      View: "Ansehen",
+    },
   },
   Mask: {
     Name: "Masken",

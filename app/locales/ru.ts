@@ -1,15 +1,21 @@
 import { SubmitKey } from "../store/config";
 import { PartialLocaleType } from "../locales/index";
 import { getClientConfig } from "../config/client";
-
+import { SAAS_CHAT_UTM_URL } from "@/app/constant";
 const isApp = !!getClientConfig()?.isApp;
 
 const ru: PartialLocaleType = {
   WIP: "Скоро...",
   Error: {
     Unauthorized: isApp
-      ? "Обнаружен недействительный API-ключ. Пожалуйста, перейдите на страницу [Настройки](/#/settings), чтобы проверить правильность конфигурации API-ключа."
-      : "Неверный или пустой пароль доступа. Пожалуйста, перейдите на страницу [Вход](/#/auth), чтобы ввести правильный пароль доступа, или на страницу [Настройки](/#/settings), чтобы ввести ваш собственный API-ключ OpenAI.",
+      ? `😆 В разговоре возникли некоторые проблемы, не переживайте:
+    \\ 1️⃣ Если вы хотите начать без настройки, [нажмите здесь, чтобы немедленно начать разговор 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 2️⃣ Если вы хотите использовать свои ресурсы OpenAI, нажмите [здесь](/#/settings), чтобы изменить настройки ⚙️`
+      : `😆 В разговоре возникли некоторые проблемы, не переживайте:
+    \ 1️⃣ Если вы хотите начать без настройки, [нажмите здесь, чтобы немедленно начать разговор 🚀](${SAAS_CHAT_UTM_URL})
+    \ 2️⃣ Если вы используете частную версию развертывания, нажмите [здесь](/#/auth), чтобы ввести ключ доступа 🔑
+    \ 3️⃣ Если вы хотите использовать свои ресурсы OpenAI, нажмите [здесь](/#/settings), чтобы изменить настройки ⚙️
+ `,
   },
   Auth: {
     Title: "Требуется пароль",
@@ -18,6 +24,10 @@ const ru: PartialLocaleType = {
     Input: "Введите код доступа здесь",
     Confirm: "Подтвердить",
     Later: "Позже",
+    Return: "Назад",
+    SaasTips: "Настройка слишком сложна, я хочу использовать это немедленно",
+    TopTips:
+      "🥳 Предложение по запуску NextChat AI: разблокируйте OpenAI o1, GPT-4o, Claude-3.5 и новейшие большие модели прямо сейчас",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} бесед`,
@@ -43,6 +53,8 @@ const ru: PartialLocaleType = {
       PinToastAction: "Просмотреть",
       Delete: "Удалить",
       Edit: "Редактировать",
+      RefreshTitle: "Обновить заголовок",
+      RefreshToast: "Запрос на обновление заголовка отправлен",
     },
     Commands: {
       new: "Новый чат",
@@ -284,6 +296,14 @@ const ru: PartialLocaleType = {
     },
 
     Access: {
+      SaasStart: {
+        Title: "Используйте NextChat AI",
+        Label: "(Самое экономичное решение)",
+        SubTitle:
+          "Официально поддерживается NextChat, готов к использованию без настройки, поддерживает последние крупные модели, такие как OpenAI o1, GPT-4o и Claude-3.5",
+        ChatNow: "Начать чат",
+      },
+
       AccessCode: {
         Title: "Пароль доступа",
         SubTitle: "Администратор включил защиту паролем",
@@ -406,6 +426,17 @@ const ru: PartialLocaleType = {
           SubTitle: "Пример:",
         },
       },
+      AI302: {
+        ApiKey: {
+          Title: "Ключ интерфейса",
+          SubTitle: "Использовать пользовательский 302.AI API-ключ",
+          Placeholder: "302.AI API-ключ",
+        },
+        Endpoint: {
+          Title: "Адрес интерфейса",
+          SubTitle: "Пример:",
+        },
+      },
       CustomModel: {
         Title: "Название пользовательской модели",
         SubTitle:
@@ -414,6 +445,10 @@ const ru: PartialLocaleType = {
     },
 
     Model: "Модель",
+    CompressModel: {
+      Title: "Модель сжатия",
+      SubTitle: "Модель, используемая для сжатия истории",
+    },
     Temperature: {
       Title: "Случайность (temperature)",
       SubTitle: "Чем больше значение, тем более случайные ответы",
@@ -470,6 +505,21 @@ const ru: PartialLocaleType = {
   },
   FineTuned: {
     Sysmessage: "Вы - помощник",
+  },
+  SearchChat: {
+    Name: "Поиск",
+    Page: {
+      Title: "Поиск в истории чатов",
+      Search: "Введите ключевые слова для поиска",
+      NoResult: "Результатов не найдено",
+      NoData: "Нет данных",
+      Loading: "Загрузка",
+
+      SubTitle: (count: number) => `Найдено ${count} результатов`,
+    },
+    Item: {
+      View: "Просмотр",
+    },
   },
   Mask: {
     Name: "Маска",
